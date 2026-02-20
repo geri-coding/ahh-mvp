@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Healing Hub — Find Your Culturally Competent Therapist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #2F855A;
+            --forest-dark: #1E5C3A;
+            --forest-light: #48BB78;
+            --saffron: #D69E2E;
+            --saffron-light: #F6E05E;
+            --terracotta: #C05621;
+            --terracotta-light: #ED8936;
+            --cream: #FDFAF5;
+            --warm-white: #FFFEF9;
+            --charcoal: #1A202C;
+            --gray-mid: #4A5568;
+            --gray-light: #EDF2F7;
+            --border: #E2E8F0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.10);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── CRISIS BANNER ── */
+        .crisis-banner {
+            background: #C53030;
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .crisis-banner span { opacity: 0.9; }
+
+        .crisis-btn {
+            background: white;
+            color: #C53030;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .crisis-btn:hover { background: #FED7D7; }
+
+        /* ── HEADER ── */
+        header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 18px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+        }
+
+        .logo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--forest-dark);
+            letter-spacing: -0.01em;
+        }
+
+        nav { display: flex; align-items: center; gap: 36px; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--forest);
+            transition: width 0.25s ease;
+        }
+
+        nav a:hover { color: var(--forest); }
+        nav a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--forest);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--forest-dark) !important; transform: translateY(-1px); }
+
+        /* ── HERO ── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 88vh;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(72,187,120,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-text {
+            padding: 80px 60px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(47,133,90,0.08);
+            border: 1px solid rgba(47,133,90,0.2);
+            color: var(--forest);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 7px 14px;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            width: fit-content;
+        }
+
+        .hero-eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--forest-light);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 4vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--forest);
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--saffron);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--gray-mid);
+            max-width: 480px;
+            margin-bottom: 40px;
+            line-height: 1.75;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 52px;
+        }
+
+        .btn-primary {
+            background: var(--forest);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 7px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--forest-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(47,133,90,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--forest);
+            padding: 13px 28px;
+            border-radius: 7px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--forest);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: var(--forest);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            color: var(--forest);
+            font-size: 0.85rem;
+        }
+
+        .trust-label {
+            font-size: 0.82rem;
+            color: var(--gray-mid);
+            font-weight: 500;
+        }
+
+        /* Hero Image Panel */
+        .hero-image-panel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--cream) 0%, transparent 15%),
+                        linear-gradient(to bottom, transparent 60%, rgba(47,133,90,0.15) 100%);
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 48px;
+            left: -24px;
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3;
+            animation: floatUp 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(0); }
+            to { transform: translateY(-6px); }
+        }
+
+        .hero-badge-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--forest-light), var(--forest));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .hero-badge-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .hero-badge-text span {
+            font-size: 0.78rem;
+            color: var(--gray-mid);
+        }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: var(--forest-dark);
+            padding: 28px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--saffron-light);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* ── SECTION SHARED ── */
+        .section {
+            padding: 96px 80px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--forest);
+            background: rgba(47,133,90,0.08);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--gray-mid);
+            max-width: 560px;
+            line-height: 1.75;
+        }
+
+        /* ── WHY SECTION ── */
+        .why-section {
+            background: white;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .why-text .section-sub {
+            margin-bottom: 36px;
+            max-width: 100%;
+        }
+
+        .why-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .why-check {
+            width: 24px;
+            height: 24px;
+            background: rgba(47,133,90,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .why-check svg {
+            width: 13px;
+            height: 13px;
+            color: var(--forest);
+        }
+
+        .why-list strong {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 3px;
+        }
+
+        .why-list p {
+            font-size: 0.88rem;
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        .why-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .why-card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--forest);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .why-card:hover::before { transform: scaleX(1); }
+
+        .why-card:nth-child(2)::before { background: var(--saffron); }
+        .why-card:nth-child(3)::before { background: var(--terracotta); }
+        .why-card:nth-child(4)::before { background: var(--forest-light); }
+
+        .card-emoji { font-size: 1.6rem; margin-bottom: 12px; }
+
+        .why-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 0.83rem;
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        /* ── HOW IT WORKS ── */
+        .how-section {
+            background: var(--cream);
+        }
+
+        .how-header { margin-bottom: 64px; }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: calc(16.66% + 20px);
+            right: calc(16.66% + 20px);
+            height: 2px;
+            background: linear-gradient(to right, var(--forest-light), var(--saffron), var(--terracotta-light));
+            z-index: 0;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 16px;
+            padding: 36px 28px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .step-num {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .step-card:nth-child(1) .step-num { background: var(--forest); }
+        .step-card:nth-child(2) .step-num { background: var(--saffron); }
+        .step-card:nth-child(3) .step-num { background: var(--terracotta); }
+
+        .step-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            line-height: 1.7;
+        }
+
+        .step-tag {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--forest);
+            background: rgba(47,133,90,0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-section {
+            background: var(--forest-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section::before {
+            content: '"';
+            position: absolute;
+            top: -40px;
+            left: 60px;
+            font-family: 'Playfair Display', serif;
+            font-size: 20rem;
+            color: rgba(255,255,255,0.03);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .testimonials-section .section-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--saffron-light);
+        }
+
+        .testimonials-section .section-title { color: white; }
+
+        .testimonials-section .section-sub {
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 56px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 32px 28px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 18px;
+        }
+
+        .star { color: var(--saffron-light); font-size: 0.9rem; }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.75;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .author-detail {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ── PRICING ── */
+        .pricing-section { background: white; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 56px;
+        }
+
+        .price-card {
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .price-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .price-card.featured {
+            border-color: var(--forest);
+            background: var(--forest-dark);
+            color: white;
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--saffron);
+            color: var(--charcoal);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--forest);
+            margin-bottom: 8px;
+        }
+
+        .price-card.featured .price-label { color: var(--saffron-light); }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .price-card.featured .price-amount { color: white; }
+
+        .price-period {
+            font-size: 0.83rem;
+            color: var(--gray-mid);
+            margin-bottom: 24px;
+        }
+
+        .price-card.featured .price-period { color: rgba(255,255,255,0.6); }
+
+        .price-divider {
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 24px;
+        }
+
+        .price-card.featured .price-divider { background: rgba(255,255,255,0.15); }
+
+        .price-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--gray-mid);
+        }
+
+        .price-card.featured .price-features li { color: rgba(255,255,255,0.8); }
+
+        .price-check {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(47,133,90,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--forest);
+        }
+
+        .price-card.featured .price-check {
+            background: rgba(255,255,255,0.15);
+            color: var(--saffron-light);
+        }
+
+        .price-check svg { width: 10px; height: 10px; }
+
+        .btn-price-primary {
+            display: block;
+            background: var(--forest);
+            color: white;
+            text-align: center;
+            padding: 13px 24px;
+            border-radius: 7px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            width: 100%;
+        }
+
+        .btn-price-primary:hover {
+            background: var(--forest-dark);
+            transform: translateY(-1px);
+        }
+
+        .price-card.featured .btn-price-primary {
+            background: var(--saffron);
+            color: var(--charcoal);
+        }
+
+        .price-card.featured .btn-price-primary:hover { background: var(--saffron-light); }
+
+        .btn-price-outline {
+            display: block;
+            background: transparent;
+            color: var(--forest);
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: 7px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--forest);
+            cursor: pointer;
+            transition: all 0.25s;
+            width: 100%;
+        }
+
+        .btn-price-outline:hover {
+            background: var(--forest);
+            color: white;
+        }
+
+        /* ── CTA SECTION ── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--terracotta) 0%, #E67E4E 50%, var(--saffron) 100%);
+            padding: 96px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 220px;
+            height: 220px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .cta-eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-cta-white {
+            background: white;
+            color: var(--terracotta);
+            padding: 14px 32px;
+            border-radius: 7px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .btn-cta-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta-outline {
+            background: transparent;
+            color: white;
+            padding: 13px 30px;
+            border-radius: 7px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .btn-cta-outline:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0F1F17;
+            padding: 64px 80px 32px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .logo-name { color: white; font-size: 1.15rem; margin-left: 10px; }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.45);
+            margin-top: 14px;
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: white;
+        }
+
+        .footer-col h5 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--forest-light); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding-top: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--forest-light); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            header { padding: 18px 32px; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-text { padding: 60px 32px; }
+            .hero-image-panel { height: 420px; }
+            .section { padding: 72px 32px; }
+            .stats-bar { padding: 28px 32px; }
+            .why-grid { grid-template-columns: 1fr; gap: 48px; }
+            .steps-grid::before { display: none; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .cta-section { padding: 72px 32px; }
+            footer { padding: 48px 32px 28px; }
+        }
+
+        @media (max-width: 640px) {
+            nav { gap: 16px; }
+            nav a:not(.nav-cta) { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .stats-bar { gap: 20px; }
+            .stat-divider { display: none; }
+            .why-cards { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-up:nth-child(3) { transition-delay: 0.2s; }
+        .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <!-- Crisis Banner -->
+    <div class="crisis-banner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white" opacity="0.8">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>Need immediate support? Crisis help is available 24/7</span>
+        <button class="crisis-btn">Get Help Now</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo-wrap">
+            <svg class="logo-icon" width="40" height="40" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M239.8 462.75C363.125 462.75 463.1 362.854 463.1 239.625C463.1 116.396 363.125 16.5 239.8 16.5C116.475 16.5 16.5 116.396 16.5 239.625C16.5 362.854 116.475 462.75 239.8 462.75Z" stroke="#2F855A" stroke-width="33"/>
+                <path d="M239.8 462.75C363.125 462.75 463.1 362.854 463.1 239.625C463.1 116.396 363.125 16.5 239.8 16.5C116.475 16.5 16.5 116.396 16.5 239.625C16.5 362.854 116.475 462.75 239.8 462.75Z" stroke="#266A48" stroke-opacity="0.3" stroke-width="33"/>
+                <path d="M221 382.5C313.508 382.5 388.5 307.508 388.5 215C388.5 122.492 313.508 47.5 221 47.5C128.492 47.5 53.5 122.492 53.5 215C53.5 307.508 128.492 382.5 221 382.5Z" fill="#ECC94B" fill-opacity="0.84" stroke="#D69E2E" stroke-width="18"/>
+                <path d="M173 239.5C219.116 239.5 256.5 202.116 256.5 156C256.5 109.884 219.116 72.5 173 72.5C126.884 72.5 89.5 109.884 89.5 156C89.5 202.116 126.884 239.5 173 239.5Z" fill="url(#paint0_linear_header_idx)" fill-opacity="0.8" stroke="#C05621" stroke-width="6"/>
+                <defs>
+                    <linearGradient id="paint0_linear_header_idx" x1="89.5" y1="72.5" x2="256.5" y2="239.5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#DD6B20" stop-opacity="0.9"/>
+                        <stop offset="1" stop-color="#C05621" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-name">Aura Healing Hub</span>
+        </a>
+        <nav>
+            <a href="directory.html">Find Therapist</a>
+            <a href="#">How It Works</a>
+            <a href="#">Resources</a>
+            <a href="#">About</a>
+            <a href="directory.html" class="nav-cta">Browse Therapists</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-dot"></span>
+                Culturally Competent Care
+            </div>
+            <div class="hero-tagline">You Matter. You Are Understood. You Are Whole.</div>
+            <h1>Find Therapists Who <em>Truly Understand</em> Your Cultural Experience.</h1>
+            <p class="hero-desc">Connect with licensed mental health professionals who honor your background, identity, and lived experiences — no matter where you come from.</p>
+            <div class="hero-buttons">
+                <a href="directory.html" class="btn-primary">Start Your Journey</a>
+                <a href="#how-it-works" class="btn-outline">How It Works</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="trust-label">500+ Verified Therapists</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <span class="trust-label">HIPAA Compliant</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M17 8h1a4 4 0 010 8h-1M6 8H5a4 4 0 000 8h1m5-9v10"/>
+                        </svg>
+                    </div>
+                    <span class="trust-label">AI-Powered Matching</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image-panel">
+            <img src="Cropped_Hero_image_1.jpg" alt="Culturally competent mental health care" />
+            <div class="hero-image-overlay"></div>
+            <div class="hero-badge">
+                <div class="hero-badge-icon">🌱</div>
+                <div class="hero-badge-text">
+                    <strong>Free to Start</strong>
+                    <span>No insurance required</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Culturally Competent Therapists</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Match Satisfaction Rate</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Cultural Specialties</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Crisis Support Available</span>
+        </div>
+    </div>
+
+    <!-- Why Section -->
+    <section class="section why-section">
+        <div class="why-grid">
+            <div class="why-text">
+                <span class="section-tag">Why It Matters</span>
+                <h2 class="section-title">Mental Health Care Built for <em style="font-style:italic; color:var(--forest)">Every</em> Community</h2>
+                <p class="section-sub">Mainstream mental health care often misses the mark. Cultural context isn't a bonus — it's essential to healing. Aura Healing Hub was built to close that gap.</p>
+                <ul class="why-list">
+                    <li>
+                        <div class="why-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <strong>No More Explaining Your Background</strong>
+                            <p>Your therapist already understands your cultural context, values, and lived experiences.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="why-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <strong>Verified Cultural Competency Credentials</strong>
+                            <p>Every therapist carries verified specialty tags — from racial trauma to intergenerational healing.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="why-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <strong>Community-Validated Trust</strong>
+                            <p>Real reviews from people with shared experiences — not anonymous ratings.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="why-cards">
+                <div class="why-card fade-up">
+                    <div class="card-emoji">🌍</div>
+                    <h4>Cultural Understanding</h4>
+                    <p>Therapists trained in your community's specific history, values, and challenges.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="card-emoji">💬</div>
+                    <h4>Community Reviews</h4>
+                    <p>Transparent feedback from real clients with similar backgrounds — no pay-to-play ratings.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="card-emoji">🔐</div>
+                    <h4>Safe & Private</h4>
+                    <p>HIPAA-compliant platform designed with your privacy and dignity at the center.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <div class="card-emoji">✅</div>
+                    <h4>Verified Professionals</h4>
+                    <p>Licensed, credentialed therapists with confirmed cultural competency training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section how-section" id="how-it-works">
+        <div class="how-header">
+            <span class="section-tag">Simple Process</span>
+            <h2 class="section-title">Three Steps to the Right Therapist</h2>
+            <p class="section-sub">Get matched with a culturally competent therapist in minutes — no insurance required to start.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card fade-up">
+                <div class="step-num">1</div>
+                <h3>Take the Cultural Match Quiz</h3>
+                <p>Answer a few questions about your background, preferences, and what matters most to you in a therapist. Completely free and confidential.</p>
+                <span class="step-tag">Free · 2 Minutes</span>
+            </div>
+            <div class="step-card fade-up">
+                <div class="step-num">2</div>
+                <h3>Browse Your Matched Therapists</h3>
+                <p>Review AI-recommended therapists with verified cultural competency credentials, specialties, and community reviews.</p>
+                <span class="step-tag">Free · No Credit Card</span>
+            </div>
+            <div class="step-card fade-up">
+                <div class="step-num">3</div>
+                <h3>Book & Begin Healing</h3>
+                <p>Schedule your first session with your chosen therapist. Insurance verification and booking support included.</p>
+                <span class="step-tag" style="background: rgba(192,86,33,0.1); color: var(--terracotta);">From $15 Booking Fee</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section">
+        <span class="section-tag">Stories of Healing</span>
+        <h2 class="section-title" style="margin-bottom:12px">Heard, Understood, and Whole.</h2>
+        <p class="section-sub">Real experiences from people who found their match through Aura Healing Hub.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-up">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Finally found a therapist who understands the complexities of being a Black woman in America. The matching was spot on — I felt heard from day one."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background: var(--forest);">M</div>
+                    <div>
+                        <div class="author-name">Maya, 32</div>
+                        <div class="author-detail">Beta Tester · Atlanta, GA</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-up">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"I was skeptical about therapy, but Aura Healing Hub connected me with someone who truly gets my background and challenges. It's been transformative."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background: var(--saffron);">D</div>
+                    <div>
+                        <div class="author-name">Diana, 28</div>
+                        <div class="author-detail">Beta Tester · Houston, TX</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-up">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"No more explaining my cultural context from scratch. My therapist understood from day one — that made all the difference in my healing journey."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background: var(--terracotta);">K</div>
+                    <div>
+                        <div class="author-name">Keisha, 35</div>
+                        <div class="author-detail">Beta Tester · Chicago, IL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section pricing-section">
+        <div style="max-width: 560px;">
+            <span class="section-tag">Transparent Pricing</span>
+            <h2 class="section-title">Simple, Honest Pricing</h2>
+            <p class="section-sub">No hidden fees. Start free, pay only when you're ready to book.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card fade-up">
+                <div class="price-label">For Clients</div>
+                <div class="price-amount">Free</div>
+                <div class="price-period">Always free to browse</div>
+                <div class="price-divider"></div>
+                <ul class="price-features">
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Cultural Match Quiz
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Browse Therapist Directory
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Mental Health Resources
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Crisis Support 24/7
+                    </li>
+                </ul>
+                <a href="directory.html" class="btn-price-outline">Start Free</a>
+            </div>
+            <div class="price-card featured fade-up">
+                <div class="featured-tag">Most Popular</div>
+                <div class="price-label">Pay-As-You-Go</div>
+                <div class="price-amount">$5–25</div>
+                <div class="price-period">Per service · No subscription</div>
+                <div class="price-divider"></div>
+                <ul class="price-features">
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Everything in Free
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Insurance Verification ($5)
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Appointment Booking ($15–25)
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Priority Matching Support
+                    </li>
+                </ul>
+                <a href="directory.html" class="btn-price-primary">Find My Therapist</a>
+            </div>
+            <div class="price-card fade-up">
+                <div class="price-label">For Therapists</div>
+                <div class="price-amount">$49</div>
+                <div class="price-period">Per month · Cancel anytime</div>
+                <div class="price-divider"></div>
+                <ul class="price-features">
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Enhanced Profile & Listing
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Priority Placement in Search
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        AI-Matched Client Referrals
+                    </li>
+                    <li>
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        Analytics Dashboard
+                    </li>
+                </ul>
+                <a href="#" class="btn-price-primary">Join the Network</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-eyebrow">Begin Today</div>
+        <h2>Your Healing Journey Starts Here.</h2>
+        <p>Join thousands who've found culturally competent care through Aura Healing Hub — free to start, no insurance required.</p>
+        <div class="cta-buttons">
+            <a href="directory.html" class="btn-cta-white">Find Your Therapist</a>
+            <a href="#" class="btn-cta-outline">For Therapists →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo-wrap" style="text-decoration:none;">
+                    <svg width="36" height="36" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M239.8 462.75C363.125 462.75 463.1 362.854 463.1 239.625C463.1 116.396 363.125 16.5 239.8 16.5C116.475 16.5 16.5 116.396 16.5 239.625C16.5 362.854 116.475 462.75 239.8 462.75Z" stroke="#2F855A" stroke-width="33"/>
+                        <path d="M239.8 462.75C363.125 462.75 463.1 362.854 463.1 239.625C463.1 116.396 363.125 16.5 239.8 16.5C116.475 16.5 16.5 116.396 16.5 239.625C16.5 362.854 116.475 462.75 239.8 462.75Z" stroke="#266A48" stroke-opacity="0.3" stroke-width="33"/>
+                        <path d="M221 382.5C313.508 382.5 388.5 307.508 388.5 215C388.5 122.492 313.508 47.5 221 47.5C128.492 47.5 53.5 122.492 53.5 215C53.5 307.508 128.492 382.5 221 382.5Z" fill="#ECC94B" fill-opacity="0.84" stroke="#D69E2E" stroke-width="18"/>
+                        <path d="M173 239.5C219.116 239.5 256.5 202.116 256.5 156C256.5 109.884 219.116 72.5 173 72.5C126.884 72.5 89.5 109.884 89.5 156C89.5 202.116 126.884 239.5 173 239.5Z" fill="url(#paint0_linear_footer_idx)" fill-opacity="0.8" stroke="#C05621" stroke-width="6"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_footer_idx" x1="89.5" y1="72.5" x2="256.5" y2="239.5" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#DD6B20" stop-opacity="0.9"/>
+                                <stop offset="1" stop-color="#C05621" stop-opacity="0.9"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-name">Aura Healing Hub</span>
+                </a>
+                <p class="footer-tagline">Connecting communities with culturally competent mental health care that honors your unique experiences.</p>
+                <div class="footer-social">
+                    <a class="social-btn" href="#" aria-label="Twitter">𝕏</a>
+                    <a class="social-btn" href="#" aria-label="Instagram">In</a>
+                    <a class="social-btn" href="#" aria-label="YouTube">▶</a>
+                    <a class="social-btn" href="#" aria-label="LinkedIn">Li</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Platform</h5>
+                <a href="directory.html">Find a Therapist</a>
+                <a href="#">How It Works</a>
+                <a href="#">Resources</a>
+                <a href="#">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <a href="#">Crisis Resources</a>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Insurance</a>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <a href="#">About Us</a>
+                <a href="#">Our Mission</a>
+                <a href="#">For Therapists</a>
+                <a href="#">Press</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Aura Healing Hub. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
