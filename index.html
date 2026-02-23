@@ -328,7 +328,8 @@
         .hero-image-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right, var(--cream) 0%, transparent 6%);
+            background: linear-gradient(to right, var(--cream) 0%, transparent 15%),
+                        linear-gradient(to bottom, transparent 60%, rgba(47,133,90,0.15) 100%);
         }
 
         .hero-badge {
@@ -1168,7 +1169,7 @@
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
         <span>Need immediate support? Crisis help is available 24/7</span>
-        <button class="crisis-btn">Get Help Now</button>
+        <button class="crisis-btn" onclick="openCrisisModal()">Get Help Now</button>
     </div>
 
     <!-- Header -->
@@ -1215,26 +1216,26 @@
                 <div class="trust-item">
                     <div class="trust-icon">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <span class="trust-label">500+ Verified Therapists</span>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
                     </div>
-                    <span class="trust-label">HIPAA Compliant</span>
+                    <span class="trust-label">Privacy First</span>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M17 8h1a4 4 0 010 8h-1M6 8H5a4 4 0 000 8h1m5-9v10"/>
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <span class="trust-label">AI-Powered Matching</span>
+                    <span class="trust-label">Verified Credentials</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+                        </svg>
+                    </div>
+                    <span class="trust-label">Founding Network — Now Open</span>
                 </div>
             </div>
         </div>
@@ -1254,18 +1255,18 @@
     <!-- Stats Bar -->
     <div class="stats-bar">
         <div class="stat-item">
-            <span class="stat-number">500+</span>
-            <span class="stat-label">Culturally Competent Therapists</span>
+            <span class="stat-number">Beta</span>
+            <span class="stat-label">Founding Network — Now Accepting Therapists</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <span class="stat-number">95%</span>
-            <span class="stat-label">Match Satisfaction Rate</span>
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Cultural Competency Specialties</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-            <span class="stat-number">20+</span>
-            <span class="stat-label">Cultural Specialties</span>
+            <span class="stat-number">Free</span>
+            <span class="stat-label">To Browse & Connect</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
@@ -1412,7 +1413,7 @@
         <div style="max-width: 560px;">
             <span class="section-tag">Transparent Pricing</span>
             <h2 class="section-title">Simple, Honest Pricing</h2>
-            <p class="section-sub">No hidden fees. Start free, pay only when you're ready to book.</p>
+            <p class="section-sub">We are in beta — building this with you, not for you. Start free. More features coming soon.</p>
         </div>
         <div class="pricing-grid">
             <div class="price-card fade-up">
@@ -1423,85 +1424,86 @@
                 <ul class="price-features">
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        Cultural Match Quiz
-                    </li>
-                    <li>
-                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
                         Browse Therapist Directory
                     </li>
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        Mental Health Resources
+                        Cultural Competency Filters
                     </li>
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
                         Crisis Support 24/7
                     </li>
+                    <li style="opacity:0.5;">
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        AI Match Quiz — Coming Soon
+                    </li>
                 </ul>
-                <a href="directory.html" class="btn-price-outline">Start Free</a>
+                <a href="directory.html" class="btn-price-outline">Browse Directory</a>
             </div>
             <div class="price-card featured fade-up">
-                <div class="featured-tag">Most Popular</div>
+                <div class="featured-tag">Coming Soon</div>
                 <div class="price-label">Pay-As-You-Go</div>
                 <div class="price-amount">$5–25</div>
-                <div class="price-period">Per service · No subscription</div>
+                <div class="price-period">Launching with full platform</div>
                 <div class="price-divider"></div>
                 <ul class="price-features">
-                    <li>
-                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        Everything in Free
-                    </li>
-                    <li>
+                    <li style="opacity:0.6;">
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
                         Insurance Verification ($5)
                     </li>
-                    <li>
+                    <li style="opacity:0.6;">
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
                         Appointment Booking ($15–25)
                     </li>
-                    <li>
+                    <li style="opacity:0.6;">
+                        <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                        AI-Powered Matching
+                    </li>
+                    <li style="opacity:0.6;">
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
                         Priority Matching Support
                     </li>
                 </ul>
-                <a href="directory.html" class="btn-price-primary">Find My Therapist</a>
+                <a href="directory.html" class="btn-price-primary">Browse Free Now</a>
             </div>
             <div class="price-card fade-up">
-                <div class="price-label">For Therapists</div>
+                <div class="featured-tag" style="background: var(--forest); color: white;">For Therapists</div>
+                <div class="price-label">Founding Member</div>
                 <div class="price-amount">$49</div>
                 <div class="price-period">Per month · Cancel anytime</div>
                 <div class="price-divider"></div>
                 <ul class="price-features">
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        Enhanced Profile & Listing
+                        Featured Profile & Listing
                     </li>
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        Priority Placement in Search
+                        Top of Search Results
                     </li>
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        AI-Matched Client Referrals
+                        Shape the Platform's Future
                     </li>
                     <li>
                         <div class="price-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                        Analytics Dashboard
+                        Lowest Price — Locked In Forever
                     </li>
                 </ul>
-                <a href="join.html" class="btn-price-primary">Join the Network</a>
+                <a href="join.html" class="btn-price-primary">Apply to Join</a>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-section">
-        <div class="cta-eyebrow">Begin Today</div>
-        <h2>Your Healing Journey Starts Here.</h2>
-        <p>Join thousands who've found culturally competent care through Aura Healing Hub — free to start, no insurance required.</p>
+        <div class="cta-eyebrow">We're Building This Together</div>
+        <h2>Be Part of Something That Matters.</h2>
+        <p>Aura Healing Hub is in beta — and that means founding therapists and early clients shape what this becomes. Join now at the ground floor.</p>
         <div class="cta-buttons">
-            <a href="directory.html" class="btn-cta-white">Find Your Therapist</a>
-            <a href="join.html" class="btn-cta-outline">For Therapists →</a>
+            <a href="directory.html" class="btn-cta-white">Browse the Directory</a>
+            <a href="join.html" class="btn-cta-outline">For Therapists — Apply Free →</a>
         </div>
     </section>
 
@@ -1543,7 +1545,7 @@
                 <h5>Support</h5>
                 <a href="#">Crisis Resources</a>
                 <a href="#">Help Center</a>
-                <a href="mailto:hello@aurahealinghub.com">Contact Us</a>
+                <a href="#">Contact Us</a>
                 <a href="#">Insurance</a>
             </div>
             <div class="footer-col">
@@ -1576,5 +1578,61 @@
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
+    <!-- Crisis Modal -->
+    <div id="crisisModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
+        <div style="background:white; border-radius:16px; max-width:480px; width:100%; padding:40px 36px; position:relative; box-shadow:0 24px 60px rgba(0,0,0,0.25);">
+            <button onclick="closeCrisisModal()" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#718096; line-height:1;">×</button>
+            <div style="text-align:center; margin-bottom:24px;">
+                <div style="font-size:2rem; margin-bottom:10px;">🆘</div>
+                <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:#1A202C; margin-bottom:8px;">You Are Not Alone</h2>
+                <p style="font-size:0.9rem; color:#4A5568; line-height:1.7;">Immediate support is available right now — 24 hours a day, 7 days a week.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+                <a href="tel:988" style="display:flex; align-items:center; gap:16px; background:#F0FFF4; border:1.5px solid #68D391; border-radius:10px; padding:16px 20px; text-decoration:none;">
+                    <div style="font-size:1.5rem;">📞</div>
+                    <div>
+                        <div style="font-weight:700; color:#1E5C3A; font-size:0.95rem;">Call or Text 988</div>
+                        <div style="font-size:0.8rem; color:#4A5568;">Suicide & Crisis Lifeline · Free · 24/7</div>
+                    </div>
+                </a>
+                <a href="sms:741741&body=HOME" style="display:flex; align-items:center; gap:16px; background:#EBF8FF; border:1.5px solid #63B3ED; border-radius:10px; padding:16px 20px; text-decoration:none;">
+                    <div style="font-size:1.5rem;">💬</div>
+                    <div>
+                        <div style="font-weight:700; color:#2B6CB0; font-size:0.95rem;">Text HOME to 741741</div>
+                        <div style="font-size:0.8rem; color:#4A5568;">Crisis Text Line · Free · 24/7</div>
+                    </div>
+                </a>
+                <a href="tel:911" style="display:flex; align-items:center; gap:16px; background:#FFF5F5; border:1.5px solid #FC8181; border-radius:10px; padding:16px 20px; text-decoration:none;">
+                    <div style="font-size:1.5rem;">🚨</div>
+                    <div>
+                        <div style="font-weight:700; color:#C53030; font-size:0.95rem;">Call 911</div>
+                        <div style="font-size:0.8rem; color:#4A5568;">For immediate physical danger only</div>
+                    </div>
+                </a>
+            </div>
+            <p style="font-size:0.78rem; color:#718096; text-align:center; line-height:1.6;">You can also reach us at <a href="mailto:hello@aurahealinghub.com" style="color:#2F855A;">hello@aurahealinghub.com</a> — we are a small team and we care about you.</p>
+            <button onclick="closeCrisisModal()" style="display:block; width:100%; margin-top:16px; padding:12px; background:#2F855A; color:white; border:none; border-radius:8px; font-size:0.9rem; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif;">Close</button>
+        </div>
+    </div>
+
+    <script>
+    function openCrisisModal() {
+        const modal = document.getElementById('crisisModal');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCrisisModal() {
+        const modal = document.getElementById('crisisModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    document.getElementById('crisisModal').addEventListener('click', function(e) {
+        if (e.target === this) closeCrisisModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeCrisisModal();
+    });
+    </script>
+
 </body>
 </html>
