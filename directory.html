@@ -99,9 +99,22 @@
             font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--forest);
+            transition: width 0.25s ease;
         }
 
         nav a:hover, nav a.active { color: var(--forest); }
+        nav a:hover::after { width: 100%; }
 
         .nav-cta {
             background: var(--forest);
@@ -545,15 +558,7 @@
             grid-template-columns: auto 1fr auto;
             gap: 20px;
             align-items: start;
-            transition: all 0.25s ease;
-            cursor: pointer;
             position: relative;
-        }
-
-        .therapist-card:hover {
-            border-color: var(--forest);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
         }
 
         .therapist-card.featured {
@@ -882,6 +887,127 @@
             .therapist-card { grid-template-columns: auto 1fr; }
         }
 
+        /* ── CRISIS MODAL ── */
+        .crisis-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .crisis-modal-overlay.open { display: flex; }
+        .crisis-modal-box {
+            background: white;
+            border-radius: 16px;
+            padding: 36px 32px 28px;
+            max-width: 460px;
+            width: 92%;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+        }
+        .crisis-modal-close {
+            position: absolute;
+            top: 14px; right: 18px;
+            background: none; border: none;
+            font-size: 1.5rem; cursor: pointer;
+            color: #A0AEC0; line-height: 1;
+        }
+        .crisis-modal-close:hover { color: var(--charcoal); }
+        .crisis-modal-icon {
+            width: 48px; height: 48px;
+            background: #FED7D7;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .crisis-modal-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+        .crisis-modal-box > p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .crisis-resource {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--gray-subtle);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        .crisis-resource:hover { border-color: #C53030; }
+        .crisis-resource-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .crisis-resource-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            display: block;
+        }
+        .crisis-resource-desc {
+            font-size: 0.78rem;
+            color: var(--gray-mid);
+        }
+        .crisis-modal-footer {
+            margin-top: 20px;
+            font-size: 0.78rem;
+            color: var(--gray-mid);
+            text-align: center;
+        }
+
+        /* ── BOOKING MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: white;
+            border-radius: 14px;
+            padding: 36px 32px 28px;
+            max-width: 440px;
+            width: 90%;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+        .modal-close {
+            position: absolute;
+            top: 14px; right: 18px;
+            background: none; border: none;
+            font-size: 1.5rem; cursor: pointer;
+            color: var(--gray-mid); line-height: 1;
+        }
+        .modal-close:hover { color: var(--charcoal); }
+        .modal-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+        .modal-therapist { font-size: 0.9rem; color: var(--gray-mid); margin-bottom: 16px; font-weight: 500; }
+        .modal-note { font-size: 0.88rem; color: var(--gray-mid); margin-bottom: 24px; line-height: 1.6; }
+        .modal-actions { display: flex; gap: 10px; }
+        .modal-actions .btn-book,
+        .modal-actions .btn-contact { flex: 1; }
+
         /* Fade in animation */
         .card-animate {
             opacity: 0;
@@ -909,7 +1035,7 @@
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
         <span>Need immediate support? Crisis help is available 24/7</span>
-        <button class="crisis-btn">Get Help Now</button>
+        <a href="tel:988" class="crisis-btn">Get Help Now</a>
     </div>
 
     <!-- Header -->
@@ -931,10 +1057,10 @@
         </a>
         <nav>
             <a href="directory.html" class="active">Find Therapist</a>
-            <a href="#">How It Works</a>
-            <a href="#">Resources</a>
-            <a href="#">About</a>
-            <a href="#" class="nav-cta">List Your Practice</a>
+            <a href="#coming-soon">How It Works</a>
+            <a href="#coming-soon">Resources</a>
+            <a href="#coming-soon">About</a>
+            <a href="join.html" class="nav-cta">List Your Practice</a>
         </nav>
     </header>
 
@@ -1058,7 +1184,7 @@
             <!-- Insurance -->
             <div class="filter-group">
                 <div class="filter-group-title">Insurance</div>
-                <select class="filter-select" id="insuranceSelect">
+                <select class="filter-select" id="insuranceSelect" onchange="filterTherapists()">
                     <option value="">All insurance types</option>
                     <option>Aetna</option>
                     <option>Blue Cross Blue Shield</option>
@@ -1074,7 +1200,7 @@
             <div class="therapist-cta-card">
                 <h3>Are You a Therapist?</h3>
                 <p>Join our network of culturally competent professionals and connect with clients who truly need your expertise.</p>
-                <button class="btn-join">List Your Practice →</button>
+                <button class="btn-join" onclick="window.location.href='join.html'">List Your Practice →</button>
             </div>
         </aside>
 
@@ -1100,7 +1226,7 @@
             <div class="therapist-grid" id="therapistGrid">
 
                 <!-- Card 1 — Featured -->
-                <div class="therapist-card featured card-animate" data-cultural="Racial Trauma,Black Culture,Intergenerational Trauma,Microaggressions" data-specialty="Anxiety,Depression,Family Conflict" data-location="Atlanta, GA">
+                <div class="therapist-card featured card-animate" data-cultural="Racial Trauma,Black Culture,Intergenerational Trauma,Microaggressions" data-specialty="Anxiety,Depression,Family Conflict" data-location="Atlanta, GA" data-format="Video,In-Person">
                     <div class="featured-badge">⭐ Featured</div>
                     <div class="avatar-placeholder" style="background: linear-gradient(135deg, #2F855A, #48BB78);">AW</div>
                     <div class="card-body">
@@ -1138,14 +1264,14 @@
                         </div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-book">Book Session</button>
-                        <button class="btn-contact">View Profile</button>
+                        <button class="btn-book" onclick="openBooking(this)">Book Session</button>
+                        <button class="btn-contact" onclick="openProfile(this)">View Profile</button>
                         <span class="session-fee">From $120/session</span>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="therapist-card card-animate" data-cultural="Black Culture,LGBTQ+ Affirming,Code-Switching" data-specialty="Burnout,Career Counseling,Relationships" data-location="Houston, TX">
+                <div class="therapist-card card-animate" data-cultural="Black Culture,LGBTQ+ Affirming,Code-Switching" data-specialty="Burnout,Career Counseling,Relationships" data-location="Houston, TX" data-format="Video,Phone">
                     <div class="avatar-placeholder" style="background: linear-gradient(135deg, #D69E2E, #F6E05E); color: #744210;">MJ</div>
                     <div class="card-body">
                         <div class="card-top">
@@ -1182,14 +1308,14 @@
                         </div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-book">Book Session</button>
-                        <button class="btn-contact">View Profile</button>
+                        <button class="btn-book" onclick="openBooking(this)">Book Session</button>
+                        <button class="btn-contact" onclick="openProfile(this)">View Profile</button>
                         <span class="session-fee">From $100/session</span>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="therapist-card card-animate" data-cultural="LGBTQ+ Affirming,Black Culture,Intergenerational Trauma" data-specialty="Depression,Anxiety,Teen Counseling" data-location="Chicago, IL">
+                <div class="therapist-card card-animate" data-cultural="LGBTQ+ Affirming,Black Culture,Intergenerational Trauma" data-specialty="Depression,Anxiety,Teen Counseling" data-location="Chicago, IL" data-format="Video,In-Person">
                     <div class="avatar-placeholder" style="background: linear-gradient(135deg, #C05621, #ED8936);">KT</div>
                     <div class="card-body">
                         <div class="card-top">
@@ -1226,14 +1352,14 @@
                         </div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-book">Book Session</button>
-                        <button class="btn-contact">View Profile</button>
+                        <button class="btn-book" onclick="openBooking(this)">Book Session</button>
+                        <button class="btn-contact" onclick="openProfile(this)">View Profile</button>
                         <span class="session-fee">From $150/session</span>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="therapist-card card-animate" data-cultural="Black Culture,Intergenerational Trauma,Racial Trauma" data-specialty="Family Conflict,Relationships,Grief & Loss" data-location="Oakland, CA">
+                <div class="therapist-card card-animate" data-cultural="Black Culture,Intergenerational Trauma,Racial Trauma" data-specialty="Family Conflict,Relationships,Grief & Loss" data-location="Oakland, CA" data-format="Video,In-Person">
                     <div class="avatar-placeholder" style="background: linear-gradient(135deg, #553C9A, #805AD5);">JD</div>
                     <div class="card-body">
                         <div class="card-top">
@@ -1270,14 +1396,14 @@
                         </div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-book">Book Session</button>
-                        <button class="btn-contact">View Profile</button>
+                        <button class="btn-book" onclick="openBooking(this)">Book Session</button>
+                        <button class="btn-contact" onclick="openProfile(this)">View Profile</button>
                         <span class="session-fee">From $110/session</span>
                     </div>
                 </div>
 
                 <!-- Card 5 -->
-                <div class="therapist-card card-animate" data-cultural="Military Veterans,Black Culture,Racial Trauma" data-specialty="Trauma & PTSD,Anxiety,Substance Abuse" data-location="Washington, DC">
+                <div class="therapist-card card-animate" data-cultural="Military Veterans,Black Culture,Racial Trauma" data-specialty="Trauma & PTSD,Anxiety,Substance Abuse" data-location="Washington, DC" data-format="Video,Phone">
                     <div class="avatar-placeholder" style="background: linear-gradient(135deg, #2B6CB0, #4299E1);">TW</div>
                     <div class="card-body">
                         <div class="card-top">
@@ -1313,14 +1439,14 @@
                         </div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-book">Book Session</button>
-                        <button class="btn-contact">View Profile</button>
+                        <button class="btn-book" onclick="openBooking(this)">Book Session</button>
+                        <button class="btn-contact" onclick="openProfile(this)">View Profile</button>
                         <span class="session-fee">From $130/session</span>
                     </div>
                 </div>
 
                 <!-- Card 6 -->
-                <div class="therapist-card card-animate" data-cultural="Black Culture,LGBTQ+ Affirming,Intergenerational Trauma" data-specialty="Teen Counseling,Depression,Family Conflict" data-location="Brooklyn, NY">
+                <div class="therapist-card card-animate" data-cultural="Black Culture,LGBTQ+ Affirming,Intergenerational Trauma" data-specialty="Teen Counseling,Depression,Family Conflict" data-location="Brooklyn, NY" data-format="Video,In-Person">
                     <div class="avatar-placeholder" style="background: linear-gradient(135deg, #276749, #38A169);">SC</div>
                     <div class="card-body">
                         <div class="card-top">
@@ -1357,8 +1483,8 @@
                         </div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-book">Book Session</button>
-                        <button class="btn-contact">View Profile</button>
+                        <button class="btn-book" onclick="openBooking(this)">Book Session</button>
+                        <button class="btn-contact" onclick="openProfile(this)">View Profile</button>
                         <span class="session-fee">From $95/session</span>
                     </div>
                 </div>
@@ -1366,7 +1492,7 @@
             </div><!-- end therapist-grid -->
 
             <div class="load-more-wrap">
-                <button class="btn-load-more">Load More Therapists</button>
+                <button class="btn-load-more" onclick="loadMore(this)">Load More Therapists</button>
             </div>
         </div>
     </div>
@@ -1382,6 +1508,54 @@
             </div>
         </div>
     </footer>
+
+    <!-- Crisis Modal -->
+    <div class="crisis-modal-overlay" id="crisisModal" onclick="closeCrisisModal(event)">
+        <div class="crisis-modal-box">
+            <button class="crisis-modal-close" onclick="closeCrisisModal()">×</button>
+            <div class="crisis-modal-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#C53030"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <h3>You're not alone. Help is here.</h3>
+            <p>If you're in crisis or need immediate support, please reach out to one of these free, confidential resources available 24/7.</p>
+            <a href="tel:988" class="crisis-resource">
+                <span class="crisis-resource-icon">📞</span>
+                <span>
+                    <span class="crisis-resource-name">988 Suicide &amp; Crisis Lifeline</span>
+                    <span class="crisis-resource-desc">Call or text 988 — free, confidential, 24/7</span>
+                </span>
+            </a>
+            <a href="sms:741741?body=HOME" class="crisis-resource">
+                <span class="crisis-resource-icon">💬</span>
+                <span>
+                    <span class="crisis-resource-name">Crisis Text Line</span>
+                    <span class="crisis-resource-desc">Text HOME to 741741 — available 24/7</span>
+                </span>
+            </a>
+            <a href="tel:18006624357" class="crisis-resource">
+                <span class="crisis-resource-icon">🤝</span>
+                <span>
+                    <span class="crisis-resource-name">SAMHSA Helpline</span>
+                    <span class="crisis-resource-desc">1-800-662-4357 — mental health &amp; substance use</span>
+                </span>
+            </a>
+            <p class="crisis-modal-footer">If this is a medical emergency, please call <strong>911</strong> immediately.</p>
+        </div>
+    </div>
+
+    <!-- Booking / Profile Modal -->
+    <div class="modal-overlay" id="bookingModal" onclick="closeModal(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h3 id="modalTitle">Book a Session</h3>
+            <p class="modal-therapist" id="modalTherapistName"></p>
+            <p class="modal-note" id="modalNote">Create a free account to book a session, view availability, and message this therapist directly.</p>
+            <div class="modal-actions">
+                <button class="btn-book" onclick="window.location.href='index.html'">Create Free Account</button>
+                <button class="btn-contact" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         const activeFilters = { cultural: [], specialty: [], format: [] };
@@ -1416,9 +1590,7 @@
 
         function removeFilter(val) {
             document.querySelectorAll('.filter-tag').forEach(btn => {
-                if (btn.textContent.trim() === val) {
-                    btn.classList.remove('active');
-                }
+                if (btn.textContent.trim() === val) btn.classList.remove('active');
             });
             for (const type in activeFilters) {
                 activeFilters[type] = activeFilters[type].filter(f => f !== val);
@@ -1434,6 +1606,7 @@
             document.getElementById('activeFilters').innerHTML = '';
             document.getElementById('searchInput').value = '';
             document.getElementById('locationInput').value = '';
+            document.getElementById('insuranceSelect').value = '';
             filterTherapists();
         }
 
@@ -1441,29 +1614,77 @@
             const cards = document.querySelectorAll('.therapist-card');
             const search = document.getElementById('searchInput').value.toLowerCase();
             const location = document.getElementById('locationInput').value.toLowerCase();
+            const insurance = document.getElementById('insuranceSelect').value.toLowerCase();
             let visible = 0;
 
             cards.forEach(card => {
                 const cardCultural = (card.dataset.cultural || '').toLowerCase();
                 const cardSpecialty = (card.dataset.specialty || '').toLowerCase();
                 const cardLocation = (card.dataset.location || '').toLowerCase();
+                const cardFormat = (card.dataset.format || '').toLowerCase();
                 const cardText = card.textContent.toLowerCase();
 
                 const matchesCultural = activeFilters.cultural.length === 0 ||
                     activeFilters.cultural.some(f => cardCultural.includes(f.toLowerCase()));
                 const matchesSpecialty = activeFilters.specialty.length === 0 ||
                     activeFilters.specialty.some(f => cardSpecialty.includes(f.toLowerCase()));
-                const matchesFormat = activeFilters.format.length === 0;
+                const matchesFormat = activeFilters.format.length === 0 ||
+                    activeFilters.format.some(f => cardFormat.includes(f.toLowerCase()));
                 const matchesSearch = !search || cardText.includes(search);
                 const matchesLocation = !location || cardLocation.includes(location);
+                const matchesInsurance = !insurance || cardText.includes(insurance);
 
-                const show = matchesCultural && matchesSpecialty && matchesFormat && matchesSearch && matchesLocation;
+                const show = matchesCultural && matchesSpecialty && matchesFormat && matchesSearch && matchesLocation && matchesInsurance;
                 card.style.display = show ? 'grid' : 'none';
                 if (show) visible++;
             });
 
             document.getElementById('resultCount').textContent = visible;
         }
+
+        function openBooking(btn) {
+            const card = btn.closest('.therapist-card');
+            const name = card.querySelector('.therapist-name').textContent;
+            document.getElementById('modalTitle').textContent = 'Book a Session';
+            document.getElementById('modalTherapistName').textContent = name;
+            document.getElementById('modalNote').textContent = 'Create a free account to book a session, view availability, and message this therapist directly.';
+            document.getElementById('bookingModal').classList.add('open');
+        }
+
+        function openProfile(btn) {
+            const card = btn.closest('.therapist-card');
+            const name = card.querySelector('.therapist-name').textContent;
+            document.getElementById('modalTitle').textContent = 'View Full Profile';
+            document.getElementById('modalTherapistName').textContent = name;
+            document.getElementById('modalNote').textContent = 'Sign in or create a free account to view this therapist\'s full profile, read all reviews, and check their availability.';
+            document.getElementById('bookingModal').classList.add('open');
+        }
+
+        function closeModal(e) {
+            if (!e || e.target === document.getElementById('bookingModal')) {
+                document.getElementById('bookingModal').classList.remove('open');
+            }
+        }
+
+        function closeCrisisModal(e) {
+            if (!e || e.target === document.getElementById('crisisModal')) {
+                document.getElementById('crisisModal').classList.remove('open');
+            }
+        }
+
+        function loadMore(btn) {
+            btn.textContent = 'No more therapists to load';
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+            btn.style.cursor = 'default';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeCrisisModal();
+            }
+        });
     </script>
 </body>
 </html>

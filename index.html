@@ -328,8 +328,7 @@
         .hero-image-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right, var(--cream) 0%, transparent 15%),
-                        linear-gradient(to bottom, transparent 60%, rgba(47,133,90,0.15) 100%);
+            background: linear-gradient(to bottom, transparent 60%, rgba(47,133,90,0.15) 100%);
         }
 
         .hero-badge {
@@ -520,7 +519,6 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 28px 24px;
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -533,13 +531,8 @@
             right: 0;
             height: 3px;
             background: var(--forest);
-            transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.3s ease;
         }
-
-        .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-        .why-card:hover::before { transform: scaleX(1); }
 
         .why-card:nth-child(2)::before { background: var(--saffron); }
         .why-card:nth-child(3)::before { background: var(--terracotta); }
@@ -592,12 +585,6 @@
             position: relative;
             z-index: 1;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
         }
 
         .step-num {
@@ -685,13 +672,7 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 14px;
             padding: 32px 28px;
-            transition: all 0.3s ease;
             backdrop-filter: blur(4px);
-        }
-
-        .testimonial-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
         }
 
         .stars {
@@ -754,13 +735,7 @@
             border: 1.5px solid var(--border);
             border-radius: 16px;
             padding: 36px 30px;
-            transition: all 0.3s ease;
             position: relative;
-        }
-
-        .price-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
         }
 
         .price-card.featured {
@@ -1169,7 +1144,7 @@
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
         <span>Need immediate support? Crisis help is available 24/7</span>
-        <button class="crisis-btn">Get Help Now</button>
+        <a href="tel:988" class="crisis-btn">Get Help Now</a>
     </div>
 
     <!-- Header -->
@@ -1191,9 +1166,9 @@
         </a>
         <nav>
             <a href="directory.html">Find Therapist</a>
-            <a href="#">How It Works</a>
-            <a href="#">Resources</a>
-            <a href="#">About</a>
+            <a href="#coming-soon">How It Works</a>
+            <a href="#coming-soon">Resources</a>
+            <a href="#coming-soon">About</a>
             <a href="directory.html" class="nav-cta">Browse Therapists</a>
         </nav>
     </header>

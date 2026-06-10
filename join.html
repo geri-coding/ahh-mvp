@@ -95,8 +95,20 @@
             font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--forest);
+            transition: width 0.25s ease;
         }
         nav a:hover { color: var(--forest); }
+        nav a:hover::after { width: 100%; }
         .nav-cta {
             background: var(--forest);
             color: white !important;
@@ -409,11 +421,8 @@
             border: 1.5px solid var(--border);
             border-radius: 16px;
             padding: 40px 36px;
-            transition: all 0.3s;
             position: relative;
         }
-
-        .plan-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 
         .plan-card.premium {
             border-color: var(--saffron);
@@ -567,10 +576,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            transition: all 0.3s;
         }
-
-        .process-step:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 
         .step-num {
             width: 48px;
@@ -635,10 +641,7 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 32px 28px;
-            transition: all 0.3s;
         }
-
-        .trust-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 
         .trust-icon-wrap {
             width: 48px;
@@ -1068,7 +1071,7 @@
     <div class="crisis-banner">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="white" opacity="0.8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         <span>Need immediate support? Crisis help is available 24/7</span>
-        <button class="crisis-btn">Get Help Now</button>
+        <a href="tel:988" class="crisis-btn">Get Help Now</a>
     </div>
 
     <!-- Header -->
@@ -1089,8 +1092,8 @@
         </a>
         <nav>
             <a href="directory.html">Find Therapist</a>
-            <a href="#">How It Works</a>
-            <a href="#">About</a>
+            <a href="#coming-soon">How It Works</a>
+            <a href="#coming-soon">About</a>
             <a href="#apply" class="nav-cta">Apply Now</a>
         </nav>
     </header>
